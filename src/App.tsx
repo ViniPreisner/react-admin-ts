@@ -1,25 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { 
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom';
+import Main from './pages/main/Main';
+import Navbar from './Components/navbar/Navbar';
+import Sidebar from './Components/sidebar/Sidebar';
 
-function App() {
+import './index.css';
+import Users from './pages/users/Users';
+
+type Props = {
+
+}
+
+const App = (props: Props) => {
+
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+  
+  const openSidebar = () => {
+    setSidebarOpen(true)
+  }
+
+  const closeSidebar = () => {
+    setSidebarOpen(false)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+    <div className="container__main">
+      <Navbar sidebarOpen={sidebarOpen} openSidebar={openSidebar} />
+        <Switch>
+          <Route path="/" exact component={Main} />
+          <Route path="/users" exact component={Users} />
+        </Switch>
+      <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar} />
     </div>
+    </Router>
   );
 }
 
