@@ -1,0 +1,12 @@
+.content {
+    background: #f3f4f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login__card {
+    background-color: #fff;
+    width: 400px;
+}

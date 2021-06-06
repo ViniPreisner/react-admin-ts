@@ -5,7 +5,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
-import { Home } from './Pages/Home';
 import App from './App';
 
 ReactDOM.render(

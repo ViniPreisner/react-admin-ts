@@ -76,7 +76,7 @@ const Sidebar = (props: Props) => {
                 </div>
                 <div className="sidebar__logout">
                     <i className="fa fa-power-off"></i>
-                    <a href="#">Logout</a>
+                    <Link to={'/auth/login'}>Logout</Link>
                 </div>
             </div>
 
