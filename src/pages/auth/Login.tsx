@@ -13,7 +13,7 @@ type FormLogin = {
 
 const Login = (props: Props) => {
 
-    const { signed, signIn } = useAuth()
+    const { signed, loading, signIn } = useAuth()
 
     const { control, handleSubmit, formState: { errors } } = useForm<FormLogin>();
 
@@ -43,6 +43,7 @@ const Login = (props: Props) => {
                                     type="email"
                                     id="email"
                                     placeholder="Enter email"
+                                    readOnly={loading}
                                     {...field}
                                 />}
                             />
@@ -61,6 +62,7 @@ const Login = (props: Props) => {
                                     type="password"
                                     id="password"
                                     placeholder="Password"
+                                    readOnly={loading}
                                     {...field}
                                 />}
                             />
@@ -69,7 +71,11 @@ const Login = (props: Props) => {
                         <Form.Group controlId="formBasicCheckbox">
                             <Form.Check type="checkbox" label="Lembrar" />
                         </Form.Group>
-                        <Button variant="primary" type="submit">
+                        <Button
+                            variant="primary"
+                            type="submit"
+                            disabled={loading}
+                        >
                             Login
                         </Button>
                     </Form>
