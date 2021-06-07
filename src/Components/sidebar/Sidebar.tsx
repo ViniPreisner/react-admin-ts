@@ -1,6 +1,7 @@
 import './Sidebar.css'
 import logo from '../../assets/pngwing.com.png'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../../context/AuthContext'
 
 type Props = {
     sidebarOpen: Boolean,
@@ -8,6 +9,12 @@ type Props = {
 }
 
 const Sidebar = (props: Props) => {
+
+    const { Logout } = useAuth()
+
+    const handleLogout = () => {
+        Logout()
+    }
 
     return (
 
@@ -43,7 +50,7 @@ const Sidebar = (props: Props) => {
                 </div>
                 <div className="sidebar__link">
                     <i className="fa fa-archive"></i>
-                    <a href="#">Produtos</a>
+                    <Link to="/products">Produtos</Link>
                 </div>
                 <div className="sidebar__link">
                     <i className="fa fa-bars"></i>
@@ -76,7 +83,7 @@ const Sidebar = (props: Props) => {
                 </div>
                 <div className="sidebar__logout">
                     <i className="fa fa-power-off"></i>
-                    <Link to={'/auth/login'}>Logout</Link>
+                    <button onClick={handleLogout}>Logout</button>
                 </div>
             </div>
 

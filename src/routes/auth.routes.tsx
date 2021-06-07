@@ -18,7 +18,7 @@ const AuthRoutes: React.FC = () => {
 
         <Router>
             <Switch>
-                <Route path="/auth/login" exact component={Login} />
+                <Route path="/" component={Login} />
             </Switch>
         </Router>
 

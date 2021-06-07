@@ -19,24 +19,12 @@ type Props = {
 
 }
 
-const App = (props: Props) => {
-
-  const [sidebarOpen, setSidebarOpen] = useState(false)
-
-  const openSidebar = () => {
-    setSidebarOpen(true)
-  }
-
-  const closeSidebar = () => {
-    setSidebarOpen(false)
-  }
+const App: React.FC = () => {
 
   return (
-    <div className="">
-      <AuthProvider>
-        <Routes />
-      </AuthProvider>
-    </div>
+    <AuthProvider>
+      <Routes />
+    </AuthProvider>
   );
 }
 

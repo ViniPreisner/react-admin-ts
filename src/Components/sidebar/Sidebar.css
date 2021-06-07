@@ -85,11 +85,13 @@
     color: #e65061;
 }
 
-.sidebar__logout > a {
+.sidebar__logout > button {
     text-decoration: none;
     color: #e65061;
     font-weight: 700;
     text-transform: uppercase;
+    border: 0;
+    background: transparent;
 }
 
 .sidebar-responsive {

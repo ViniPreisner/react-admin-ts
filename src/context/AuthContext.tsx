@@ -1,4 +1,5 @@
-import React, { createContext, useEffect, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom';
 import * as auth from '../services/auth'
 
 type Props = {
@@ -9,12 +10,14 @@ interface AuthContextData {
   signed: boolean;
   //token: string;
   user: object | null;
-  signIn(): Promise<void>
+  signIn(): Promise<void>;
+  Logout(): void;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
 export const AuthProvider: React.FC = ({ children }) => {
+  const history = useHistory()
   const [user, setUser] = useState<object | null>(null)
 
   useEffect(() => {
@@ -42,15 +45,28 @@ export const AuthProvider: React.FC = ({ children }) => {
     //sessionStorage.setItem('@App:token', response.data.token);
   }
 
+  function Logout() {
+    setUser(null);
+    sessionStorage.setItem('@App:user', JSON.stringify(null));
+    history.push('/')
+  }
+
   return (
     <AuthContext.Provider value={{
       signed: !!user, // o mesmo que fazer Boolean(user)
       user: user,
-      signIn // enviando a função
+      signIn, // enviando a função
+      Logout
     }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-export default AuthContext
+//export default AuthContext
+
+export function useAuth() {
+  const context = useContext(AuthContext);
+
+  return context;
+}

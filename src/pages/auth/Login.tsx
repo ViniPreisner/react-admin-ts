@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Button, Card, Form } from 'react-bootstrap'
 import { Controller, useForm } from 'react-hook-form'
-import AuthContext from '../../context/AuthContext'
+import { useAuth } from '../../context/AuthContext'
 import './Auth.css'
 
 type Props = {}
@@ -13,7 +13,7 @@ type FormLogin = {
 
 const Login = (props: Props) => {
 
-    const { signed, signIn } = useContext(AuthContext)
+    const { signed, signIn } = useAuth()
 
     const { control, handleSubmit, formState: { errors } } = useForm<FormLogin>();
 

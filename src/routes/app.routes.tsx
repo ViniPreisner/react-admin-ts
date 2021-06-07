@@ -11,6 +11,7 @@ import Navbar from '../Components/navbar/Navbar'
 import Sidebar from '../Components/sidebar/Sidebar'
 import Main from '../pages/main/Main'
 import Users from '../pages/users/Users'
+import Products from '../pages/products/Products'
 
 type ProtectedRouteProps = {
     //isAuthenticated: boolean;
@@ -52,18 +53,19 @@ const AppRoutes: React.FC = () => {
 
     return (
 
-        <div className="container__main">
-            <Navbar sidebarOpen={sidebarOpen} openSidebar={openSidebar} />
-            <Router>
+        <Router>
+            <div className="container__main">
+                <Navbar sidebarOpen={sidebarOpen} openSidebar={openSidebar} />
                 <Switch>
                     {/*<PrivateRoute path="/" exact component={Main} />
                     <PrivateRoute path="/users" exact component={Users} />*/}
                     <Route path="/" exact component={Main} />
                     <Route path="/users" exact component={Users} />
+                    <Route path="/products" exact component={Products} />
                 </Switch>
-            </Router>
-            <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar} />
-        </div>
+                <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar} />
+            </div>
+        </Router>
 
     )
 }
